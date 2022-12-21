@@ -1,0 +1,5 @@
+{
+    "input_username" : "#UserName",
+    "input_password" : "#Password",
+    "button_login":"input[type='submit']"
+}
