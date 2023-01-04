@@ -1,15 +1,14 @@
-class LoginPage {
-    constructor(page) {
-      this.page = page;
-      this.input_usernametxt = this.page.locator("#UserName");
-      this.input_passwordtxt = this.page.locator("#Password");
-      this.button_logintxt = this.page.locator("input[type='submit']");
-      this.button_dashboardicon = this.page.locator(".moduleIconSmall.icon_dashboard.mm-toggle");
-    }    
+const BasePage = require("./Base.page");
 
-    async navigate() {
-        await this.page.goto('https://test.seaplanner.com/');
-      }
+class LoginPage extends BasePage {
+    constructor(page) {
+      super(page);
+      this.input_usernametxt = page.locator("#UserName");
+      this.input_passwordtxt = page.locator("#Password");
+      this.button_logintxt = page.locator("input[type='submit']");
+      this.button_dashboardicon = page.locator(".moduleIconSmall.icon_dashboard.mm-toggle");
+    }    
+    
     async fillUsername(username){
         await this.input_usernametxt.fill(username)
     }
@@ -27,7 +26,7 @@ class LoginPage {
         await this.fillUsername(username);
         await this.fillPassword(password);
         await this.clickLogin();
-        await this.ClickDashboard();
+        await this.page.waitForTimeout(5000);
     }
 }
 
