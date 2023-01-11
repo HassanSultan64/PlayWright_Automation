@@ -1,7 +1,7 @@
 
 const { test, expect } = require('@playwright/test');
-const { LoginPage } = require('../Pages/login.page');
-const { InductionPage}= require('../Pages/Induction.page')
+const { LoginPage } = require('../Pages/Login/login.page');
+const { InductionPage}= require('../Pages/Inductions/InductionHome.page')
 
 test.describe('Induction test cases', () => {
     let loginPage = null;
@@ -14,7 +14,7 @@ test.describe('Induction test cases', () => {
       });
     test('tc01: Click to induction  ', async ({ page }) => {
       await loginPage.login("HSultan","Generation2121@")
-      await inductionPage.clickInduction();
+      await inductionPage.clickInductionPage();
     });
 
   });

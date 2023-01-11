@@ -1,4 +1,4 @@
-const BasePage = require("./Base.page");
+const BasePage = require("../Base.page");
 
 class LoginPage extends BasePage {
     constructor(page) {
@@ -23,7 +23,7 @@ class LoginPage extends BasePage {
     }
     async login(username,password){
         await this.navigate();
-        await this.fillUsername(username);
+        await this.fillUsername(username,{slowMo:5000});
         await this.fillPassword(password);
         await this.clickLogin();
         await this.page.waitForTimeout(5000);

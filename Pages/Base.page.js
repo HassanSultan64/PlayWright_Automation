@@ -8,5 +8,6 @@ class BasePage{
     async navigate(){
         await this.page.goto(`https://test.seaplanner.com/`)
     }
+
 }
 module.exports = BasePage;

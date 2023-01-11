@@ -1,5 +1,6 @@
-const BasePage = require("./Base.page");
+const BasePage = require("../Base.page");
 const path = require('path');
+const { expect } = require("@playwright/test");
 require('playwright');
 
 class OperationsPage extends BasePage{
@@ -8,6 +9,7 @@ class OperationsPage extends BasePage{
         super(page);
         this.Button_OperationsIcon = page.locator("//body/div[@id='mainMenu']/ul[1]/li[4]/div[1]/a[1]/span[1]");
         this.Button_Map = page.locator("//*[@id='mainMenu']/ul/li[4]/div[2]/div/ul/li[1]/a");      
+        this.Notification_MapLoaded = page.locator("//*[@id='toast-container']/div/div[2]");
         }
 
         async ClickOnOperationsIcon(){
@@ -16,10 +18,11 @@ class OperationsPage extends BasePage{
         async ClickOnMap(){
             await this.ClickOnOperationsIcon();
             await this.Button_Map.click();
-            await this.page.waitForTimeout(10000);
+            await expect(this.Notification_MapLoaded).toBeVisible();
+            await this.page.waitForTimeout(5000);
             await this.page.screenshot({
-                path: path.join(__dirname, 'screenshots', 'screenshot.png')
-              });
+            path: path.join(__dirname, 'screenshots', 'Map.png')
+            });
         }
 
 

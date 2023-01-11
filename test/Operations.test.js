@@ -1,7 +1,7 @@
 
 const { test, expect } = require('@playwright/test');
-const { LoginPage } = require('../Pages/login.page');
-const { OperationsPage}= require('../Pages/Operations.page')
+const { LoginPage } = require('../Pages/Login/login.page');
+const { OperationsPage}= require('../Pages/Operations/Operations.page')
 
 test.describe('Operations test cases', () => {
     let loginPage = null;
@@ -12,7 +12,7 @@ test.describe('Operations test cases', () => {
         operationPage=new OperationsPage(page)
               
       });
-    test('tc01: Click to Map  ', async ({ page }) => {
+    test('tc01: Click to Map @smoke', async ({ page }) => {
       await loginPage.login("HSultan","Generation2121@")
       await operationPage.ClickOnMap();
     });

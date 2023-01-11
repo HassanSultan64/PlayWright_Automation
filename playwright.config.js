@@ -15,7 +15,7 @@ import devices from "@playwright/test"
 const config = {
   testDir: './test', //tests-examples
   /* Maximum time one test can run for. */
- // timeout: 600 * 1000,
+ timeout: 600 * 1000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
@@ -47,7 +47,7 @@ const config = {
 
       headless:false,
 
-      // slowMo: 500,
+      slowMo: 500,
 
     },
   },
